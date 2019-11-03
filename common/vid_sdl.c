@@ -304,7 +304,7 @@ VID_SetMode(const qvidmode_t *mode, const byte *palette)
     format = (const qvidformat_t *)mode->driverdata;
     sdl_format = SDL_AllocFormat(format->format);
 
-    sdl_window = SDL_CreateWindow("TyrQuake",
+    sdl_window = SDL_CreateWindow("quake",
 				  SDL_WINDOWPOS_UNDEFINED,
 				  SDL_WINDOWPOS_UNDEFINED,
 				  mode->width, mode->height, flags);
