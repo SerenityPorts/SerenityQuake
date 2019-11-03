@@ -1,14 +1,12 @@
+# SERENITY QUAKE
 
-Date:		2019-09-02
-Version: 	0.65
-Built from Tyr-Quake, by Kevin Shanahan 
-Ported to Serenity OS by Jesse Buhagiar [quaker762]
 
-Author:		Kevin Shanahan (aka. Tyrann)
-
-Webpage:	http://disenchant.net
-
-email:		kevin@shanahan.id.au
+Version: 	0.65<br/>
+Built from Tyr-Quake, by Kevin Shanahan<br/>
+Ported to Serenity OS by Jesse Buhagiar [quaker762]<br/>
+Author:		Kevin Shanahan (aka. Tyrann)<br/>
+Webpage:	http://disenchant.net<br/>
+email:		kevin@shanahan.id.au<br/>
 
 Why?
 ----
@@ -25,3 +23,7 @@ There are a few flags you can turn on/specify via `makeopts`.
 
 `SYMBOLS_ON`: Y or N, specifies whether or not debugging symbols will be stripped from the binary on a build
 `USE_X86_ASM`: This currently doesn't work (as it causes a linker error/undefined references)
+
+Also note that currently Serenity's implementation of `printf()` does not suppose the `.` format specifier. That means
+the assertion for it must be turned off or the OS will hang. Simply go to `PrintfImplementatino.cpp` found in `AK` and
+comment out the `ASSERT_NOT_REACHED` line in the default case of the switch.
