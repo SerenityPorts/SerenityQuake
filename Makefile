@@ -186,7 +186,7 @@ ifneq (,$(filter sdl,$(VID_TARGET) $(SND_TARGET) $(IN_TARGET)))
 SDL_CFLAGS_DEFAULT := $(shell sdl2-config --cflags)
 SDL_LFLAGS_DEFAULT := $(shell sdl2-config --libs)
 SDL_CFLAGS ?= $(SDL_CFLAGS_DEFAULT)
-SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -ldraw -lcore
+SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -ldraw -lcore -lpthread
 endif
 
 # ============================================================================
