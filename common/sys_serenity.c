@@ -318,6 +318,11 @@ Sys_MakeCodeWriteable(void *start_addr, void *end_addr)
 int
 main(int argc, const char *argv[])
 {
+    if (pledge("stdio thread unix shared_buffer rpath wpath cpath fattr", NULL) < 0) {
+        perror("pledge");
+        return 1;
+    }
+
     double time, oldtime, newtime;
     quakeparms_t parms;
 #ifdef SERVERONLY
@@ -367,6 +372,11 @@ main(int argc, const char *argv[])
     Sys_Init();
     Host_Init(&parms);
 #endif /* SERVERONLY */
+
+    if (pledge("stdio thread shared_buffer rpath wpath cpath", NULL) < 0) {
+        perror("pledge");
+        return 1;
+    }
 
     /*
      * Main Loop
