@@ -183,7 +183,7 @@ GROFF ?= groff
 
 # Now that defaults are set, if we are using SDL set the CFLAGS/LFLAGS
 ifneq (,$(filter sdl,$(VID_TARGET) $(SND_TARGET) $(IN_TARGET)))
-SDL_CFLAGS_DEFAULT := -I$(SERENITY_ROOT)/Root/usr/include/SDL2
+SDL_CFLAGS_DEFAULT := -I$(SERENITY_ROOT)/Build/Root/usr/include/SDL2
 SDL_LFLAGS_DEFAULT :=
 SDL_CFLAGS ?= $(SDL_CFLAGS_DEFAULT)
 SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -lgfx -lcore -lpthread
