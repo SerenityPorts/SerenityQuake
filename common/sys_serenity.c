@@ -318,7 +318,7 @@ Sys_MakeCodeWriteable(void *start_addr, void *end_addr)
 int
 main(int argc, const char *argv[])
 {
-    if (pledge("stdio thread unix shared_buffer rpath wpath cpath fattr", NULL) < 0) {
+    if (pledge("stdio thread unix shared_buffer rpath wpath cpath fattr sigaction", NULL) < 0) {
         perror("pledge");
         return 1;
     }
