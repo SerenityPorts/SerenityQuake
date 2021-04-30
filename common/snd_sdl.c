@@ -19,9 +19,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #include <stdio.h>
 
-#include "SDL.h"
-#include "SDL_audio.h"
-#include "SDL_endian.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_audio.h>
+#include <SDL2/SDL_endian.h>
 
 #include "console.h"
 #include "quakedef.h"
