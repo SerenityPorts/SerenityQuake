@@ -183,10 +183,10 @@ GROFF ?= groff
 
 # Now that defaults are set, if we are using SDL set the CFLAGS/LFLAGS
 ifneq (,$(filter sdl,$(VID_TARGET) $(SND_TARGET) $(IN_TARGET)))
-SDL_CFLAGS_DEFAULT := -I$(SERENITY_BUILD_DIR)/Root/usr/local/include/SDL2
+SDL_CFLAGS_DEFAULT := -I$(SERENITY_BUILD_DIR)/Root/usr/local/include/SDL2 -I$(SERENITY_BUILD_DIR)/Root/usr/include/LibGL
 SDL_LFLAGS_DEFAULT :=
 SDL_CFLAGS ?= $(SDL_CFLAGS_DEFAULT)
-SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -lgfx -lcore -lpthread -lregex
+SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -lgfx -lcore -lpthread -lregex -lgl
 endif
 
 # ============================================================================
@@ -343,8 +343,8 @@ QWSWDIR	= $(BUILD_DIR)/qwsw
 QWGLDIR	= $(BUILD_DIR)/qwgl
 QWSVDIR	= $(BUILD_DIR)/qwsv
 
-APPS =	quake$(EXT) 
-		#glquake$(EXT) \
+APPS =	quake$(EXT) \
+		glquake$(EXT)
 		#qwcl$(EXT) glqwcl$(EXT) \
 		#qwsv$(EXT)
 
@@ -539,6 +539,7 @@ endif
 install:
 	mkdir -p $(DESTDIR)/bin
 	cp bin/quake $(DESTDIR)/bin
+	cp bin/glquake $(DESTDIR)/bin
 	mkdir -p $(DESTDIR)/res/icons/16x16
 	cp quake.png $(DESTDIR)/res/icons/16x16/
 
@@ -1069,6 +1070,10 @@ ALL_QWSV_LFLAGS += $(patsubst %,-l%,$(ALL_QWSV_LIBS))
 
 $(BIN_DIR)/quake$(EXT):	$(patsubst %,$(NQSWDIR)/%,$(ALL_NQSW_OBJS))
 	$(call do_cc_link,$(ALL_NQSW_LFLAGS))
+	$(call do_strip,$@)
+
+$(BIN_DIR)/glquake$(EXT):	$(patsubst %,$(NQGLDIR)/%,$(ALL_NQGL_OBJS))
+	$(call do_cc_link,$(ALL_NQGL_LFLAGS))
 	$(call do_strip,$@)
 
 # Build man pages, text and html docs from source
