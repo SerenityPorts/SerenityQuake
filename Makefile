@@ -20,7 +20,7 @@ USE_SDL          ?= Y# New (experimental) SDL video/sound/input targets
 SYMBOLS_ON	     ?= N
 LOCALBASE        ?= /usr/local
 QBASEDIR         ?= .# Default basedir for quake data files (Linux/BSD only)
-TARGET_OS        ?= i686-pc-serenity
+TARGET_OS        ?= $(SERENITY_ARCH)-pc-serenity
 TARGET_UNIX      ?= $(if $(filter UNIX,$(TARGET_OS)),$(HOST_UNIX),)
 
 # ============================================================================
@@ -173,7 +173,7 @@ STRIP = $(TARGET)-strip
 WINDRES = $(TARGET)-windres
 endif
 else
-CC = i686-pc-serenity-gcc
+CC = $(SERENITY_ARCH)-pc-serenity-gcc
 EXT=
 endif
 endif
@@ -439,7 +439,7 @@ define do_windres_res_rc
 endef
 
 quiet_cmd_cc_link = '  LINK     $@'
-      cmd_cc_link = i686-pc-serenity-g++ -o $@ $^ $(1)
+      cmd_cc_link = $(SERENITY_ARCH)-pc-serenity-g++ -o $@ $^ $(1)
 
 define do_cc_link
 	@$(do_mkdir);
