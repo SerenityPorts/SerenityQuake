@@ -832,8 +832,6 @@ R_AliasDrawModel(entity_t *entity)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
     /* Draw */
-    glEnable(GL_VERTEX_ARRAY);
-
     if (gl_mtexable)
         qglClientActiveTexture(GL_TEXTURE0);
 
@@ -901,7 +899,6 @@ R_AliasDrawModel(entity_t *entity)
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-    glDisable(GL_VERTEX_ARRAY);
 
     c_alias_polys += aliashdr->numtris;
 

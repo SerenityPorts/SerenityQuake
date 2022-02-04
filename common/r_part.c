@@ -821,7 +821,6 @@ R_DrawParticles(void)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
     glDepthMask(GL_FALSE);
 
-    glEnable(GL_VERTEX_ARRAY);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
@@ -840,7 +839,6 @@ R_DrawParticles(void)
     if (particle)
         goto addParticle;
 
-    glDisable(GL_VERTEX_ARRAY);
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
     glDisableClientState(GL_COLOR_ARRAY);
