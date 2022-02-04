@@ -173,7 +173,6 @@ STRIP = $(TARGET)-strip
 WINDRES = $(TARGET)-windres
 endif
 else
-CC = $(SERENITY_ARCH)-pc-serenity-gcc
 EXT=
 endif
 endif
@@ -187,6 +186,10 @@ SDL_CFLAGS_DEFAULT := -I$(SERENITY_BUILD_DIR)/Root/usr/local/include/SDL2 -I$(SE
 SDL_LFLAGS_DEFAULT :=
 SDL_CFLAGS ?= $(SDL_CFLAGS_DEFAULT)
 SDL_LFLAGS := -lSDL2 -lm -lc -lgui -lipc -lgfx -lcore -lpthread -lregex -lgl
+endif
+
+ifeq ($(SERENITY_TOOLCHAIN), Clang)
+SDL_LFLAGS += -L${SERENITY_INSTALL_ROOT}/usr/local/lib
 endif
 
 # ============================================================================
@@ -439,7 +442,7 @@ define do_windres_res_rc
 endef
 
 quiet_cmd_cc_link = '  LINK     $@'
-      cmd_cc_link = $(SERENITY_ARCH)-pc-serenity-g++ -o $@ $^ $(1)
+      cmd_cc_link = $(CXX) -o $@ $^ $(1)
 
 define do_cc_link
 	@$(do_mkdir);
