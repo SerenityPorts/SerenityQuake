@@ -223,7 +223,6 @@ DbgPanel_Draw(debug_panel_t *panel)
     glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
     GL_Bind(glpic->texnum);
-    glEnable(GL_VERTEX_ARRAY);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
@@ -259,7 +258,6 @@ DbgPanel_Draw(debug_panel_t *panel)
 
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-    glDisable(GL_VERTEX_ARRAY);
 
     if (panel->alpha < 1.0f) {
         glDisable(GL_BLEND);
